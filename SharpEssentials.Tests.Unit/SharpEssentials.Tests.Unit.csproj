@@ -8,8 +8,8 @@
     <ProjectGuid>{4AB0FC65-635E-46C2-B821-5B8C74DB7C8F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tests.Unit</RootNamespace>
-    <AssemblyName>Tests.Unit</AssemblyName>
+    <RootNamespace>SharpEssentials.Tests.Unit</RootNamespace>
+    <AssemblyName>SharpEssentials.Tests.Unit</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>

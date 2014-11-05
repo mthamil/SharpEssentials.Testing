@@ -10,7 +10,7 @@ using SharpEssentials.Testing;
 using Xunit;
 using Xunit.Sdk;
 
-namespace Tests.Unit
+namespace SharpEssentials.Tests.Unit
 {
 	/// <summary>
 	/// Contains tests for custom assertions.
