@@ -60,12 +60,6 @@
     <Compile Include="SynchronousAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SharpEssentials\SharpEssentials.csproj">
-      <Project>{573d5f8c-4c19-42c3-b84b-bc585008b505}</Project>
-      <Name>SharpEssentials</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
