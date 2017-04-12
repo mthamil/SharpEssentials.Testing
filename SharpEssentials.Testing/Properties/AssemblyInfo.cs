@@ -1,4 +1,4 @@
-﻿// Sharp Essentials
+﻿// Sharp Essentials Testing
 // Copyright 2017 Matthew Hamilton - matthamilton@live.com
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
