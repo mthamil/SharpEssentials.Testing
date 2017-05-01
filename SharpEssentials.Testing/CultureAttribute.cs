@@ -16,7 +16,6 @@
 using System;
 using System.Globalization;
 using System.Reflection;
-using System.Threading;
 using Xunit.Sdk;
 
 namespace SharpEssentials.Testing
@@ -24,7 +23,7 @@ namespace SharpEssentials.Testing
 	/// <summary>
 	/// Allows execution of a unit test with specific culture information.
 	/// </summary>
-	[AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
+	[AttributeUsage(AttributeTargets.Method)]
 	public class CultureAttribute : BeforeAfterTestAttribute
 	{
 		/// <summary>
@@ -33,7 +32,7 @@ namespace SharpEssentials.Testing
 		/// <param name="cultureName">The name of the culture that should be used for a test.</param>
 		public CultureAttribute(string cultureName)
 		{
-			_newCulture = CultureInfo.GetCultureInfo(cultureName);
+			_newCulture = new CultureInfo(cultureName);
 		}
 
 		/// <summary>
@@ -42,8 +41,8 @@ namespace SharpEssentials.Testing
 		/// </summary>
 		public override void Before(MethodInfo methodUnderTest)
 		{
-			_originalCulture = Thread.CurrentThread.CurrentCulture;
-			Thread.CurrentThread.CurrentCulture = _newCulture;
+			_originalCulture = CultureInfo.CurrentCulture;
+		    CultureInfo.CurrentCulture = _newCulture;
 		}
 
 		/// <summary>
@@ -51,7 +50,7 @@ namespace SharpEssentials.Testing
 		/// </summary>
 		public override void After(MethodInfo methodUnderTest)
 		{
-			Thread.CurrentThread.CurrentCulture = _originalCulture;
+		    CultureInfo.CurrentCulture = _originalCulture;
 		}
 
 		private CultureInfo _originalCulture;
