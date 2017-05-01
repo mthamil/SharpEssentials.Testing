@@ -5,9 +5,15 @@
     <PackageId>SharpEssentials.Testing</PackageId>
     <Authors>Matt Hamilton</Authors>
     <Product>SharpEssentials.Testing</Product>
+    <Description>Useful additional assertions and test helpers.</Description>
     <Copyright>Matt Hamilton 2017</Copyright>
-    <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
-    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/mthamil/SharpEssentials.Testing</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mthamil/SharpEssentials.Testing</RepositoryUrl>
+    <PackageLicenseUrl>https://opensource.org/licenses/Apache-2.0</PackageLicenseUrl>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <IncludeSymbols>True</IncludeSymbols>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
