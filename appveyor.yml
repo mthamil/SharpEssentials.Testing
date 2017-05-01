@@ -20,12 +20,12 @@ environment:
 init:
   - git config --global core.autocrlf true
   - ps: |
-      $isCI = $Env:APPVEYOR_REPO_TAG -ne $true
-      $isBranch = $Env:APPVEYOR_REPO_BRANCH -ne 'master'
-      $branchSuffix = "$(if ($isBranch) { '-' + $Env:APPVEYOR_REPO_BRANCH } else { '' })"
-      $Env:VersionPrefix = "$($Env:major).$($Env:minor).$($Env:APPVEYOR_BUILD_NUMBER)"
-      $Env:VersionSuffix = "$(if ($isCI) { 'CI' + $branchSuffix } else { '' })"
-      appveyor UpdateBuild -Version "$($Env:VersionPrefix)$(if ($Env:VersionSuffix -ne '') { '-' } else { '' })$($Env:VersionSuffix)"
+      $isCI = $Env:APPVEYOR_REPO_TAG -eq $false
+      $isBranch = $isCI -and ($Env:APPVEYOR_REPO_BRANCH -ne 'master')
+      $branchSuffix = "$(if ($isBranch) { '-' + $Env:APPVEYOR_REPO_BRANCH } else { $null })"
+      $Env:VersionPrefix = "$($Env:major).$($Env:minor).$($Env:patch)"
+      $Env:VersionSuffix = "$(if ($isCI) { 'CI' + $Env:APPVEYOR_BUILD_NUMBER + $branchSuffix } else { $null })"
+      appveyor UpdateBuild -Version "$($Env:VersionPrefix)$(if ($isCI) { '-' } else { $null })$($Env:VersionSuffix)"
 
 #---------------------------------#
 #       build configuration       #
@@ -47,8 +47,8 @@ cache:
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
-  assembly_version: $(major).$(minor).$(patch).0
-  assembly_file_version: $(VersionPrefix)
+  assembly_version: $(VersionPrefix).0
+  assembly_file_version: $(VersionPrefix).$(APPVEYOR_BUILD_NUMBER)
   assembly_informational_version: '{version}'
 
 nuget:
